@@ -1,3 +1,10 @@
 # ninja log v5
 0	299	7317632455171096	CMakeFiles/untitled.dir/main.cpp.obj	bffd3215600efd01
 300	404	7317632456206854	untitled.exe	832fac3752074f9a
+2	65	7317654554657235	CMakeFiles/untitled.dir/task.cpp.obj	d1a1368247bfdb5a
+10	177	7317654555789858	CMakeFiles/untitled.dir/solution.cpp.obj	d340c4de0c0c774
+6	217	7317654556186974	CMakeFiles/untitled.dir/problem.cpp.obj	1456920bf03030f9
+217	321	7317654557196160	untitled.exe	c32545ac6ab88f08
+3	309	7317656350342425	CMakeFiles/untitled.dir/main.cpp.obj	bffd3215600efd01
+7	336	7317656350610206	CMakeFiles/untitled.dir/solution.cpp.obj	d340c4de0c0c774
+336	424	7317656351460840	untitled.exe	c32545ac6ab88f08
