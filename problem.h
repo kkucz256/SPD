@@ -9,7 +9,9 @@ private:
     std::vector<Task> instance;
 public:
     Problem(int n, std::vector<Task> tasks);
-
+    void sort_q();
+    void sort_r();
+    void overview();
 
 
 
