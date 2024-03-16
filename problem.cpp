@@ -4,47 +4,58 @@
 #include "problem.h"
 
 
-Problem::Problem(int n, std::vector<Task> tasks){
-    this ->instance = tasks;
-    this ->n = n;
+Problem::Problem(int n, std::vector<Task> tasks) {
+    this->instance = tasks;
+    this->n = n;
 }
 
-void Problem::sort_q()
-{
+std::vector<Task> Problem::sort_q() {
     std::sort(instance.begin(), instance.end(), [](Task task1, Task task2) {
         return task1.get_q() < task2.get_q();
     });
-    std::cout << "\n" << std::endl;
-    for (int i = 0; i < n; i++) {
-        std::cout << "Task no: " << instance[i].get_index() << " pj: " << instance[i].get_p() << " rj: " << instance[i].get_r() << " qj: " << instance[i].get_q() << std::endl;
-    }
+    return instance;
 
 }
 
-void Problem::sort_r() {
+std::vector<Task> Problem::sort_r() {
     std::sort(instance.begin(), instance.end(), [](Task task1, Task task2) {
         return task1.get_r() < task2.get_r();
     });
-    std::cout << "\n" << std::endl;
-    for (int i = 0; i < n; i++) {
-        std::cout << "Task no: " << instance[i].get_index() << " pj: " << instance[i].get_p() << " rj: "
-                  << instance[i].get_r() << " qj: " << instance[i].get_q() << std::endl;
+    return instance;
+}
+
+void displayPermutation(const std::vector<Task>& permutation) {
+    for (Task task : permutation) {
+        std::cout << "Task " << task.get_index() << ": (r=" << task.get_r() << ", p=" << task.get_p() << ", q=" << task.get_q() << ") ";
     }
+    std::cout << std::endl;
 }
 
-void Problem::overview()
-{
+int Problem::overview() {
+    std::vector<Task> temp_instance = instance;
+    int min_cmax = 200000;
 
+    do {
+        int previous_completion_time = 0;
+        int cmax = 0;
+        for (Task task : temp_instance) {
+            int completion_time = std::max(previous_completion_time, task.get_r()) + task.get_p();
+            previous_completion_time = completion_time;
+            if (completion_time > cmax) {
+                cmax = completion_time;
+            }
+        }
+        if (cmax < min_cmax) {
+            min_cmax = cmax;
+
+        }
+    } while (std::next_permutation(temp_instance.begin(), temp_instance.end(), [](Task task1, Task task2) {
+        return task1.get_index() < task2.get_index();
+    }));
+    std::cout << "\nMinimum Cmax: " << min_cmax;
+
+    return min_cmax;
 }
 
-int finish_time(std::vector<Task>instance, int n)
-{
-    int prev =0, curr=0;
-    for(int i=0; i<n; i++)
-    {
-        prev = fmax(prev, instance[i].get_r()) + instance[i].get_p();
-        curr = fmax(curr, prev + instance[i]. get_q());
-    }
-    return curr;
-}
+
 
