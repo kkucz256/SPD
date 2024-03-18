@@ -61,14 +61,14 @@ build CMakeFiles/untitled.dir/task.cpp.obj: CXX_COMPILER__untitled_unscanned_Deb
   OBJECT_DIR = CMakeFiles\untitled.dir
   OBJECT_FILE_DIR = CMakeFiles\untitled.dir
 
-build CMakeFiles/untitled.dir/solution.cpp.obj: CXX_COMPILER__untitled_unscanned_Debug C$:/Users/kkucz/CLionProjects/zad1_spd/solution.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles\untitled.dir\solution.cpp.obj.d
+build CMakeFiles/untitled.dir/problem.cpp.obj: CXX_COMPILER__untitled_unscanned_Debug C$:/Users/kkucz/CLionProjects/zad1_spd/problem.cpp || cmake_object_order_depends_target_untitled
+  DEP_FILE = CMakeFiles\untitled.dir\problem.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\untitled.dir
   OBJECT_FILE_DIR = CMakeFiles\untitled.dir
 
-build CMakeFiles/untitled.dir/problem.cpp.obj: CXX_COMPILER__untitled_unscanned_Debug C$:/Users/kkucz/CLionProjects/zad1_spd/problem.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles\untitled.dir\problem.cpp.obj.d
+build CMakeFiles/untitled.dir/result.cpp.obj: CXX_COMPILER__untitled_unscanned_Debug C$:/Users/kkucz/CLionProjects/zad1_spd/result.cpp || cmake_object_order_depends_target_untitled
+  DEP_FILE = CMakeFiles\untitled.dir\result.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\untitled.dir
   OBJECT_FILE_DIR = CMakeFiles\untitled.dir
@@ -81,7 +81,7 @@ build CMakeFiles/untitled.dir/problem.cpp.obj: CXX_COMPILER__untitled_unscanned_
 #############################################
 # Link the executable untitled.exe
 
-build untitled.exe: CXX_EXECUTABLE_LINKER__untitled_Debug CMakeFiles/untitled.dir/main.cpp.obj CMakeFiles/untitled.dir/task.cpp.obj CMakeFiles/untitled.dir/solution.cpp.obj CMakeFiles/untitled.dir/problem.cpp.obj
+build untitled.exe: CXX_EXECUTABLE_LINKER__untitled_Debug CMakeFiles/untitled.dir/main.cpp.obj CMakeFiles/untitled.dir/task.cpp.obj CMakeFiles/untitled.dir/problem.cpp.obj CMakeFiles/untitled.dir/result.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\untitled.dir

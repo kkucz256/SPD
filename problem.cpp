@@ -1,5 +1,4 @@
 #include <algorithm>
-#include <iostream>
 #include <math.h>
 #include "problem.h"
 
@@ -9,52 +8,64 @@ Problem::Problem(int n, std::vector<Task> tasks) {
     this->n = n;
 }
 
-std::vector<Task> Problem::sort_q() {
+
+//Method to calculate cmax for further use in r sort, q sort and bruteforce according to the formula from lab class
+int Problem::calculate_cmax() {
+    int t = 0;
+    int max_cq = 0;
+
+    for (Task task : instance) {
+        t = std::max(t, task.get_r());
+        t += task.get_p();
+        int cq = t + task.get_q();
+        max_cq = std::max(max_cq, cq);
+    }
+
+    return max_cq;
+}
+
+//Method to sort the list of tasks by the smallest q parameter
+Result Problem::sort_q() {
     std::sort(instance.begin(), instance.end(), [](Task task1, Task task2) {
         return task1.get_q() < task2.get_q();
     });
-    return instance;
-
+    int cmax = calculate_cmax();
+    return Result(instance, cmax);
 }
 
-std::vector<Task> Problem::sort_r() {
+//Method to sort the list of tasks by the smallest r parameter
+Result Problem::sort_r() {
     std::sort(instance.begin(), instance.end(), [](Task task1, Task task2) {
         return task1.get_r() < task2.get_r();
     });
-    return instance;
+    int cmax = calculate_cmax();
+    return Result(instance, cmax);
 }
 
-void displayPermutation(const std::vector<Task>& permutation) {
-    for (Task task : permutation) {
-        std::cout << "Task " << task.get_index() << ": (r=" << task.get_r() << ", p=" << task.get_p() << ", q=" << task.get_q() << ") ";
-    }
-    std::cout << std::endl;
-}
 
-int Problem::overview() {
-    std::vector<Task> temp_instance = instance;
-    int min_cmax = 200000;
+//Method for bruteforce that generates n! permutations and finds the most optimal one
+Result Problem::bruteforce() {
+    int min_cmax = std::numeric_limits<int>::max();
+    std::vector<Task> best;
 
+    // Calculating cmax for the current permutation and updating best if it's smaller
     do {
-        int previous_completion_time = 0;
-        int cmax = 0;
-        for (Task task : temp_instance) {
-            int completion_time = std::max(previous_completion_time, task.get_r()) + task.get_p();
-            previous_completion_time = completion_time;
-            if (completion_time > cmax) {
-                cmax = completion_time;
-            }
-        }
+        int cmax = calculate_cmax(); // Calculate cmax for current permutation
         if (cmax < min_cmax) {
             min_cmax = cmax;
 
+            best = instance; // Update the best permutation
         }
-    } while (std::next_permutation(temp_instance.begin(), temp_instance.end(), [](Task task1, Task task2) {
+    } while (std::next_permutation(instance.begin(), instance.end(), [](Task& task1, Task& task2) {
         return task1.get_index() < task2.get_index();
     }));
-    std::cout << "\nMinimum Cmax: " << min_cmax;
 
-    return min_cmax;
+    return Result(best, min_cmax);
+}
+
+//Getter to return instance for easier printing
+std::vector<Task> Problem::get_instance() {
+    return instance;
 }
 
 

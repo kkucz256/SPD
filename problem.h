@@ -2,6 +2,7 @@
 #define PROBLEM_H
 #include <vector>
 #include "task.h"
+#include "result.h"
 
 class Problem {
 private:
@@ -9,10 +10,12 @@ private:
     std::vector<Task> instance;
 public:
     Problem(int n, std::vector<Task> tasks);
-    std::vector<Task> sort_q();
-    std::vector<Task> sort_r();
+    Result sort_q();
+    Result sort_r();
+    Result bruteforce();
+    int calculate_cmax();
 
-    int overview();
+    std::vector<Task> get_instance();
 };
 
 

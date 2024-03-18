@@ -16,7 +16,6 @@ public:
     int get_q();
     int get_index();
 
-
 };
 
 

@@ -2,7 +2,7 @@
 
 int Task::index = 0;
 
-Task::Task(int task_time, int access_time, int rest_time) {
+Task::Task(int access_time,int task_time, int rest_time) {
     this->pj = task_time;
     this->rj = access_time;
     this->qj = rest_time;

@@ -1,0 +1,6 @@
+Task no: 0 pj: 5 rj: 1 qj: 9
+Task no: 1 pj: 5 rj: 4 qj: 4
+Task no: 2 pj: 4 rj: 1 qj: 6
+Task no: 3 pj: 3 rj: 7 qj: 3
+Task no: 4 pj: 6 rj: 3 qj: 8
+Task no: 5 pj: 7 rj: 4 qj: 1
